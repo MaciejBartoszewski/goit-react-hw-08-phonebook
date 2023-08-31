@@ -18,9 +18,9 @@ export const App = () => {
     dispatch(refreshUser());
   }, []);
 
-  if (isRefreshing) {
-    return <div>Loading....</div>;
-  }
+  // if (isRefreshing) {
+  //   return <div>Loading....</div>;
+  // }
 
   return (
     <Routes>
