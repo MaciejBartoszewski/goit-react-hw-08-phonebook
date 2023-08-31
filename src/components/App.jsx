@@ -8,11 +8,11 @@ import { Layout } from './Layouts/Layout';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/actions';
-import { useAuthUser } from 'hooks/useAuthUser';
+// import { useAuthUser } from 'hooks/useAuthUser';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuthUser();
+  // const { isRefreshing } = useAuthUser();
 
   useEffect(() => {
     dispatch(refreshUser());
