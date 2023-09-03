@@ -1,19 +1,21 @@
 import css from '../ContactForm/ContactForm.module.css';
 import PropTypes from 'prop-types';
+import Button from '@mui/material/Button';
 
 export const ContactList = ({ contacts, handleDelete }) => (
   <ul>
     {contacts.map((contact, id) => (
-      <li key={id}>
-        {contact.name} {contact.number}
-        <button
-          className={css.btn}
+      <li className={css.contact} key={id}>
+        {contact.name}
+        {contact.number}
+        <Button variant="contained" size="small"
+          className={css.btn2}
           type="button"
           onClick={() => handleDelete(contact.id)}
         >
           {' '}
           Delete{' '}
-        </button>
+        </Button>
       </li>
     ))}
   </ul>

@@ -2,6 +2,7 @@ import css from '../ContactForm/ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilter } from 'redux/contacts/selectors';
 import { setFilter } from 'redux/contacts/actions';
+import TextField from '@mui/material/TextField';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -13,8 +14,8 @@ export const Filter = () => {
 
   return (
     <form>
-      <label>Find contacts by Name
-        <input
+      <label>
+        <TextField id="filled-basic" label="Find contacts by Name" variant="filled" size="small"
           className={css.input}
           type="text"
           name="filter"

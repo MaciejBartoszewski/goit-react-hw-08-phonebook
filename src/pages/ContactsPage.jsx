@@ -9,8 +9,7 @@ import { selectLoading, getContacts, getFilter } from 'redux/contacts/selectors'
 
 export const ContactsPage = () => {
     const dispatch = useDispatch();
-    const isLoading = useSelector(selectLoading);
-
+    const loading = useSelector(selectLoading);
     const contacts = useSelector(getContacts);
     const filter = useSelector(getFilter);
 
@@ -35,7 +34,7 @@ export const ContactsPage = () => {
                 <title>Your contacts</title>
             </Helmet>
             <ContactForm />
-            <div>{isLoading && 'Request in progress...'}</div>
+            <div>{loading && 'Request in progress...'}</div>
             <Filter />
             <ContactList
                 contacts={getFilteredContacts()}

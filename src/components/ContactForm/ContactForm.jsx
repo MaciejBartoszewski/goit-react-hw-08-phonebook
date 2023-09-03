@@ -1,10 +1,17 @@
 import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 import { useState } from 'react';
+import { addContact } from '../../redux/contacts/actions';
+import { selectAllContacts } from 'redux/contacts/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export const ContactForm = ({ handleSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectAllContacts);
 
   const onChangeName = event => {
     const value = event.target.value;
@@ -19,8 +26,18 @@ export const ContactForm = ({ handleSubmit }) => {
   const onSubmit = event => {
     event.preventDefault();
     handleSubmit({ name: name, number: number });
-    setName('');
-    setNumber('');
+    //   setName('');
+    //   setNumber('');
+    // };
+    const existingContact = contacts.find(contact => contact.name === name);
+
+    if (existingContact) {
+      alert('Contact already exists');
+    } else {
+      dispatch(addContact({ nameContact: name, numberContact: number }));
+      setName('');
+      setNumber('');
+    }
   };
 
   const idName = nanoid();
@@ -28,12 +45,11 @@ export const ContactForm = ({ handleSubmit }) => {
 
 
   return (
-    <div>
+    <div className={css.form}>
       <form onSubmit={onSubmit}>
         <label htmlFor={idName}>
-          Name
         </label>
-        <input
+        <TextField label="Name" variant="filled" size="small"
           className={css.input}
           id={idName}
           onChange={onChangeName}
@@ -48,9 +64,9 @@ export const ContactForm = ({ handleSubmit }) => {
 
         <label htmlFor={idNumber}>
           {' '}
-          Number{' '}
+          {' '}
         </label>
-        <input
+        <TextField label="Number" variant="filled" size="small"
           className={css.input}
           id={idNumber}
           onChange={onChangeNumber}
@@ -62,7 +78,7 @@ export const ContactForm = ({ handleSubmit }) => {
           required
           placeholder="Enter number"
         />
-        <button className={css.btn}>Add contact</button>
+        <Button variant="contained" size="small">Add contact</Button>
       </form>
     </div>
   );

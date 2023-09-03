@@ -11,10 +11,10 @@ export const UserMenu = () => {
 
     return (
         <div>
-            <p>Welcome to your phonebook {user.name}</p>
-            <Button variant="contained" type="button" onClick={() => dispatch(logOut())}>
+            <h1>{user.name}</h1>
+            <Button style={{ marginLeft: '50px', marginTop: '50px' }} variant="contained" type="button" onClick={() => dispatch(logOut())}>
                 Logout
             </Button>
-        </div>
+        </div >
     );
 };

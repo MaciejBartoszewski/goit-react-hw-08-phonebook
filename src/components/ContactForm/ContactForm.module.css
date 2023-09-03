@@ -4,6 +4,10 @@
     cursor: pointer;
     border-radius: 4px;
     margin-left: 10px;
+    
+}
+.btn2 {
+    padding-left: 20px;
 }
 
 .btn:hover {
@@ -18,4 +22,13 @@
     border-radius: 4px;
     box-shadow: 1px 1px 1px 1px gray;
     border: 1px solid black;
+}
+
+.form {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+}
+.contact {
+    margin-top: 8px;
 }

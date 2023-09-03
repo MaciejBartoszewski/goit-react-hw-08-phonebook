@@ -19,8 +19,8 @@ export const Navigation = () => {
             </div>
             {isLoggedIn ? (
                 <>
-                    <NavLink to="/contacts">Contacts</NavLink>
-                    <Button variant="outlined" size="small" onClick={handleLogout}>Log out</Button>
+                    <NavLink className={css.nav} to="/contacts">Contacts</NavLink>
+                    <Button variant="contained" size="small" onClick={handleLogout}>Log out</Button>
                 </>
             ) : (
                 <>
