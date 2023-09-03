@@ -2,33 +2,34 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "redux/auth/actions";
 import { useAuthUser } from "../../hooks/useAuthUser";
-import { useNavigate } from "react-router-dom";
+import { Button } from '@mui/material';
+import css from './Navigation.module.css'
 
 export const Navigation = () => {
+    const { isLoggedIn } = useAuthUser();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const { isLogged } = useAuthUser();
 
     const handleLogout = () => {
-        navigate("/login");
         dispatch(logOut());
     };
     return (
-        <header>
-            <nav style={{ display: 'flex', gap: '4px' }}>
-                <NavLink to='/'>Home</NavLink>
-                <NavLink to="/contacts">Contacts</NavLink>
-                {isLogged ? (
-                    <button onClick={handleLogout}>Log out</button>
-                ) : (
-                    <>
-                        <NavLink to='/login'>Log in</NavLink>
-                        <NavLink to='/register'>Register</NavLink>
-                    </>
-                )}
-            </nav>
-        </header>
-
+        <nav className={css.header}>
+            <div>
+                <NavLink className={css.nav} to='/'>Home</NavLink>
+            </div>
+            {isLoggedIn ? (
+                <>
+                    <NavLink to="/contacts">Contacts</NavLink>
+                    <Button variant="outlined" size="small" onClick={handleLogout}>Log out</Button>
+                </>
+            ) : (
+                <>
+                    <div className={css.next}>
+                        <NavLink className={css.nav} to='/login'>Log in</NavLink>
+                        <NavLink className={css.nav} to='/register'>Register</NavLink>
+                    </div>
+                </>
+            )}
+        </nav>
     );
 };

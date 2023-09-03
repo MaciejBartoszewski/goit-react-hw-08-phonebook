@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/operations';
+import { deleteContact } from 'redux/contacts/actions';
 import Button from '@mui/material/Button';
 
 export const Contact = ({ id, name, number }) => {
